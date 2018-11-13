@@ -15,6 +15,33 @@ cmd_list = {
 
 padding = 0x0000
 
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+client.bind(('0.0.0.0', accept_port_1))
+data = cmd_list['query_mode']
+client.connect(dest)
+packed_string = struct.pack("!LL", data, padding)
+client.send(packed_string)
+received__packed_string = client.recv(1024)
+client.close()
+message, key = struct.unpack("!LL", received__packed_string)
+if message == 0x801:
+    print("ERROR MESSAGE")
+    print(key)
+if message == 0x800:
+    print("SUCCESS")
+    print(key)
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+client.bind(('0.0.0.0', accept_port_2))
+data = cmd_list['get_key']
+packed_string = struct.pack("!LL", data, key)
+client.connect(dest)
+client.send(packed_string)
+received_packed_string = client.recv(1024)
+client.close()
+value = struct.unpack("!32s", received_packed_string)
+
+print(str(value))
+
 
 """
   To accomplish this task, you will need to communicate with a server running on TCP port 1337 of 
