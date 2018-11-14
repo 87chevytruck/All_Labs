@@ -10,6 +10,8 @@ C Programming:
 
 	https://www.tutorialspoint.com/c_standard_library/string_h.htm
 
+	https://fresh2refresh.com/c-programming/c-strings/
+
 	http://www.kciti.edu/wp-content/uploads/2017/07/cprogramming_tutorial.pdf
 
 	https://www.tutorialspoint.com/cprogramming/c_pointer_to_pointer.htm
